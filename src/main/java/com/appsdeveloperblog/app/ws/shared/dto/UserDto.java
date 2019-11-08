@@ -8,12 +8,19 @@ public class UserDto implements Serializable
 	private static final long serialVersionUID = -7712889750360053768L;
 	private long id;
 	private String firstName;
+	private String userId;
 	private String lastName;
 	private String email;
 	private String password;
 	private String encryptedpassword;
 	private String emailVerificationToken;
 	private Boolean emailVerificationStatus =false;
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public long getId() {
 		return id;
 	}

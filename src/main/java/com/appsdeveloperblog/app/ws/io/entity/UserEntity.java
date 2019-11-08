@@ -14,7 +14,7 @@ public class UserEntity implements Serializable {
 	@Id
 	@GeneratedValue
 	private long id;
-	
+
 	@Column(nullable=false)
 	private String userId;
 	
@@ -24,7 +24,7 @@ public class UserEntity implements Serializable {
 	@Column(nullable=false, length=50)
 	private String lastName;
 	
-	@Column(nullable=false, length=120)
+	@Column(nullable=false, length=120)//doesn't allow same email's
 	private String email;
 	
 	@Column(nullable=false)

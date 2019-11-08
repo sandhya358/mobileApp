@@ -16,36 +16,38 @@ import com.appsdeveloperblog.app.ws.ui.model.request.UserDetailsRequestModel;
 import com.appsdeveloperblog.app.ws.ui.model.response.UserRest;
 
 @RestController
-@RequestMapping("users") // http://localhost:8080/users
+@RequestMapping("users")//http://localhost:8080/users
 public class UserController {
 	@Autowired
 	UserService userService;
-
+	
 	@GetMapping
-	public String getUser() {
+	public String getUser()
+	{
 		return "get user was called";
 	}
-
-	@PostMapping
-	public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) {
-
-		UserRest returnValue = new UserRest();
-		UserDto userDto = new UserDto();
-		BeanUtils.copyProperties(userDetails, userDto);
-
-		UserDto createdUser = userService.createUser(userDto);
-		BeanUtils.copyProperties(createdUser, returnValue);
-		return returnValue;
-
+@PostMapping
+	public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) throws Exception
+	{
+	
+	UserRest returnValue =new UserRest();
+	UserDto userDto = new UserDto();
+	BeanUtils.copyProperties(userDetails, userDto);
+	
+	UserDto createdUser =userService.createUser(userDto);
+	BeanUtils.copyProperties(createdUser, returnValue);
+	System.out.println("the value at the controller is : "+returnValue.getUserId());
+	return returnValue;
 	}
-
-	@PutMapping
-	public String updateUser() {
-		return "update user was called";
-	}
-
-	@DeleteMapping
-	public String deleteUser() {
-		return "delete user was called";
-	}
+	
+@PutMapping
+public String updateUser()
+{
+	return "update user was called";
+}
+@DeleteMapping
+public String deleteUser()
+{
+	return"delete user was called";
+}
 }
